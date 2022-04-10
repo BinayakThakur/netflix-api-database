@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("deprecation")
 @Component
 @RestController
-public class Presentation {
+public class Presentation  extends WebMvcConfigurerAdapter {
     /*
      * Initializing the search algo is two step process and is generic to any entity
      * 1)There should be a entity manger that needs to be autowired
@@ -33,6 +35,7 @@ public class Presentation {
      * items
      * Sort is implemented using first field element
      */
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
